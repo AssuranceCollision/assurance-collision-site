@@ -170,9 +170,11 @@
       });
     });
   });
+  // 每次进入视口就淡入，离开就复位 —— 上下反复滚动都会重演
   var io = new IntersectionObserver(function(entries){
     entries.forEach(function(e){
-      if (e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }
+      if (e.isIntersecting){ e.target.classList.add('in'); }
+      else { e.target.classList.remove('in'); }
     });
   }, { threshold: 0.12, rootMargin: '0px 0px -8% 0px' });
   els.forEach(function(el){ io.observe(el); });
