@@ -1,0 +1,17 @@
+# OS / editor
+.DS_Store
+Thumbs.db
+*.swp
+.vscode/
+.idea/
+
+# Logs / temp
+*.log
+.netlify/
+
+# kept-but-unused image originals
+image-archive/
+
+# local hero-image generators (the output .jpg files in images/ are committed)
+make_hero_phone.py
+make_hero_bg.py
