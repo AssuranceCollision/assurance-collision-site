@@ -152,6 +152,31 @@
     slides[i].classList.add('is-active');
   }, 5000);
 })();
+
+// 滚动渐入：各板块滚到视口时淡入上滑，同组元素错落出现
+(function(){
+  var els = document.querySelectorAll('.sec-head, .card, .ba-item, .why-copy, .why-card, .contact-card, .strip .stat');
+  if (!els.length) return;
+  if (!('IntersectionObserver' in window)) { // 老浏览器兜底：直接全显示
+    els.forEach(function(el){ el.classList.add('in'); });
+    return;
+  }
+  els.forEach(function(el){ el.classList.add('reveal'); });
+  // 同一容器内的子项加递增延时，做错落效果
+  ['.grid', '.ba', '.strip-in'].forEach(function(sel){
+    document.querySelectorAll(sel).forEach(function(container){
+      Array.prototype.slice.call(container.children).forEach(function(child, idx){
+        if (child.classList.contains('reveal')) child.style.transitionDelay = (idx * 80) + 'ms';
+      });
+    });
+  });
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if (e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -8% 0px' });
+  els.forEach(function(el){ io.observe(el); });
+})();
 </script>
 
 </body>
