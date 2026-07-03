@@ -26,14 +26,18 @@
 </nav>
 
 <header id="top" class="hero-bg">
-  <img class="hero-bgimg" src="images/benz-after.jpg" alt="A white Mercedes-Benz EQS450 fully restored after collision repair at Assurance Collision" />
+  <div class="hero-slides" aria-hidden="true">
+    <div class="hero-slide is-active" style="background-image:url('images/benz-after.jpg')"></div>
+    <div class="hero-slide" style="background-image:url('images/1.jpg')"></div>
+    <div class="hero-slide" style="background-image:url('images/2.jpg')"></div>
+  </div>
   <div class="hero-overlay"></div>
   <div class="wrap hero-inner">
     <div class="eyebrow"><span class="pulse"></span><span class="t">SAN JOSE · BAY AREA 湾区 · 保诚汽车维修</span></div>
     <h1>Assurance <span class="grad">Collision</span></h1>
     <p class="lead">Restores your vehicle to factory condition.</p>
     <div class="hero-cta">
-      <a class="btn primary" href="tel:+14083685196">📞 Call (408) 368-5196</a>
+      <a class="btn white" href="tel:+14083685196">📞 Call (408) 368-5196</a>
       <a class="btn ghost" href="#contact">Get a free estimate 免费估价</a>
     </div>
     <a class="scroll-cue" href="#services">SCROLL TO EXPLORE</a>
@@ -133,6 +137,20 @@
     <p class="copy">© 2026 Assurance Collision. All rights reserved.</p>
   </div>
 </footer>
+
+<script>
+// 首屏背景轮换（交叉淡入淡出）。以后加视频：在 .hero-slides 里加一个含 <video> 的 .hero-slide 即可。
+(function(){
+  var slides = document.querySelectorAll('.hero-slide');
+  if (slides.length < 2) return;
+  var i = 0;
+  setInterval(function(){
+    slides[i].classList.remove('is-active');
+    i = (i + 1) % slides.length;
+    slides[i].classList.add('is-active');
+  }, 5000);
+})();
+</script>
 
 </body>
 </html>

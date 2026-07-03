@@ -109,7 +109,9 @@ git push        # Netlify 自动重新部署
 - [ ] **资质类文案核实**:`#why` 里 "I-CAR trained""Lifetime warranty"、服务里 "车祸律师" 是自营还是转介绍 —— 不属实的删掉,别写没有的资质
 - [ ] 服务卡片 7 个 → 3列下是 3+3+1,看是否调成更整齐的排列
 - [ ] logo 现为白底 JPG 换成的透明 PNG;若有更高清版可替换
-- [ ] **上线三步**(GitHub → Netlify → 绑域名),见 §5
+- [x] **上线三步 ①**:GitHub 仓库已建并推送 → github.com/AssuranceCollision/assurance-collision-site(专用新号,token 存在 ~/.git-credentials,credential.helper=store)
+- [x] **上线三步 ②**:Netlify 已部署 → https://assurance-collision.netlify.app(Team: AssuranceCollision's team;Build command 空、Publish 空/根目录)
+- [x] **上线三步 ③**:域名已绑定并生效 → https://assuranceautocollision.com(用 Netlify DNS;Spaceship nameservers 已改为 dns1-4.p06.nsone.net)。**已上线!**
 - [ ] 上线后补:favicon、SEO(og 图、sitemap.xml、robots.txt)、Google Search Console、Google Business Profile
 - [ ] (可选)首屏背景图 → 换成视频:`<img class="hero-bgimg">` 改成
       `<video class="hero-bgimg" autoplay muted loop playsinline poster="images/benz-after.jpg"><source src="images/hero.mp4" type="video/mp4"></video>`
