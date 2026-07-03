@@ -15,3 +15,6 @@ image-archive/
 # local hero-image generators (the output .jpg files in images/ are committed)
 make_hero_phone.py
 make_hero_bg.py
+
+# team 原图（大文件，只提交 images/team 里压缩版）
+team photos/
