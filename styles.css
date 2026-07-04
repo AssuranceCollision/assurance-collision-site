@@ -150,7 +150,7 @@ footer a{color:#fff;font-weight:700}
 .page-banner img{display:block;width:100%;height:auto;z-index:0}
 .page-banner .ov{position:absolute;inset:0;z-index:1;background:linear-gradient(rgba(8,11,15,.45) 0%,rgba(8,11,15,.22) 42%,rgba(8,11,15,.05) 70%,transparent 100%)}
 .page-banner .inner{position:absolute;top:24%;left:0;right:0;z-index:2;color:#fff}
-@media(max-width:640px){.page-banner .inner{top:15%}.page-banner p{font-size:15px}.page-banner h1{font-size:clamp(20px,6.4vw,30px);white-space:nowrap}}
+@media(max-width:640px){.page-banner .inner{top:15%}.page-banner p{font-size:15px}.page-banner h1{font-size:clamp(15px,4.5vw,24px);white-space:nowrap}}
 .page-banner h1{font-size:clamp(34px,5.5vw,60px);color:#fff;font-weight:800}
 .page-banner p{color:rgba(255,255,255,.88);margin:14px auto 0;font-size:18px;max-width:52ch}
 
