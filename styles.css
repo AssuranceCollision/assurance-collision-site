@@ -31,7 +31,18 @@ img{max-width:100%}
 .nav-links a:hover{color:var(--ink)}
 .nav-cta{background:var(--red);color:#fff;padding:11px 18px;border-radius:999px;font-weight:700;font-size:15px;white-space:nowrap;box-shadow:0 8px 20px -8px rgba(225,29,42,.6);transition:transform .15s,background .15s}
 .nav-cta:hover{background:var(--red-d);transform:translateY(-1px)}
-@media(max-width:780px){.nav-links{display:none}.nav-in{gap:12px}}
+.nav-toggle{display:none;background:none;border:0;font-size:26px;line-height:1;color:var(--ink);cursor:pointer;padding:4px 6px}
+@media(max-width:780px){
+  .nav-in{gap:12px}
+  .nav-toggle{display:block}
+  .nav-cta{margin-left:auto;font-size:14px;padding:9px 14px}
+  .nav-links{position:absolute;top:100%;left:0;right:0;flex-direction:column;gap:0;margin:0;
+    background:rgba(255,255,255,.98);backdrop-filter:blur(12px);border-bottom:1px solid var(--line);box-shadow:var(--shadow);
+    padding:6px 6vw 14px;opacity:0;transform:translateY(-10px);pointer-events:none;transition:opacity .2s,transform .2s}
+  #nav.open .nav-links{opacity:1;transform:none;pointer-events:auto}
+  .nav-links a{padding:14px 2px;font-size:17px;color:var(--ink);border-bottom:1px solid var(--line)}
+  .nav-links a:last-child{border-bottom:0}
+}
 
 /* ---------- BUTTONS ---------- */
 .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:15px 26px;border-radius:999px;font-weight:700;font-size:16px;cursor:pointer;transition:transform .15s,background .15s,box-shadow .15s;border:2px solid transparent}

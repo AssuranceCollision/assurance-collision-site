@@ -23,6 +23,7 @@
       <a href="index.html#contact">Contact</a>
     </div>
     <a class="nav-cta" href="tel:+14083685196">📞 (408) 368-5196</a>
+    <button class="nav-toggle" aria-label="Menu" aria-expanded="false">☰</button>
   </div>
 </nav>
 
@@ -39,8 +40,8 @@
   <div class="wrap">
     <div class="sec-head">
       <div class="tag">The people</div>
-      <h2 class="sec-title">One shop, one team 一个团队</h2>
-      <p class="sec-note">From the front desk to the paint booth — the crew that gets your car back on the road.</p>
+      <h2 class="sec-title">Our expert crew 专业团队</h2>
+      <p class="sec-note">The crew that gets your car back on the road.</p>
     </div>
 
     <div class="team-grid">
@@ -53,8 +54,8 @@
         <div class="m-body"><h3>Billy</h3><div class="role">Chief Mechanical Engineer · 首席机械工程师</div><p>Leads mechanical diagnosis and repair, from engines to complex drivetrain work.</p></div>
       </div>
       <div class="member">
-        <img src="images/team/louis.jpg" alt="Louis — Director of Operations" />
-        <div class="m-body"><h3>Louis</h3><div class="role">Director of Operations · 总执行主任</div><p>Our jack-of-all-trades — estimates, repairs, running the floor, Louis does it all.</p></div>
+        <img src="images/team/louis.jpg" alt="Luis — Director of Operations" />
+        <div class="m-body"><h3>Luis</h3><div class="role">Director of Operations · 总执行主任</div><p>Our jack-of-all-trades — estimates, repairs, running the floor, Louis does it all.</p></div>
       </div>
       <div class="member">
         <img src="images/team/ge.jpg" alt="Ge — Auto Body &amp; Paint Specialist" />
@@ -101,6 +102,25 @@
 </footer>
 
 <script>
+// 手机端汉堡菜单：点 ☰ 展开/收起导航；点链接后自动收起
+(function(){
+  var nav = document.getElementById('nav');
+  var tog = nav && nav.querySelector('.nav-toggle');
+  if (!tog) return;
+  tog.addEventListener('click', function(){
+    var open = nav.classList.toggle('open');
+    tog.setAttribute('aria-expanded', open ? 'true' : 'false');
+    tog.textContent = open ? '✕' : '☰';
+  });
+  nav.querySelectorAll('.nav-links a').forEach(function(a){
+    a.addEventListener('click', function(){
+      nav.classList.remove('open');
+      tog.setAttribute('aria-expanded', 'false');
+      tog.textContent = '☰';
+    });
+  });
+})();
+
 // 滚动渐入（同首页）：团队卡片滚到视口时淡入上滑，来回滚都会重演
 (function(){
   var els = document.querySelectorAll('.sec-head, .member');

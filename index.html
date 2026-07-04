@@ -23,6 +23,7 @@
       <a href="#contact">Contact</a>
     </div>
     <a class="nav-cta" href="tel:+14083685196">📞 (408) 368-5196</a>
+    <button class="nav-toggle" aria-label="Menu" aria-expanded="false">☰</button>
   </div>
 </nav>
 
@@ -142,6 +143,25 @@
 </footer>
 
 <script>
+// 手机端汉堡菜单：点 ☰ 展开/收起导航；点链接后自动收起
+(function(){
+  var nav = document.getElementById('nav');
+  var tog = nav && nav.querySelector('.nav-toggle');
+  if (!tog) return;
+  tog.addEventListener('click', function(){
+    var open = nav.classList.toggle('open');
+    tog.setAttribute('aria-expanded', open ? 'true' : 'false');
+    tog.textContent = open ? '✕' : '☰';
+  });
+  nav.querySelectorAll('.nav-links a').forEach(function(a){
+    a.addEventListener('click', function(){
+      nav.classList.remove('open');
+      tog.setAttribute('aria-expanded', 'false');
+      tog.textContent = '☰';
+    });
+  });
+})();
+
 // 首屏背景轮换（交叉淡入淡出）。以后加视频：在 .hero-slides 里加一个含 <video> 的 .hero-slide 即可。
 (function(){
   var slides = document.querySelectorAll('.hero-slide');
