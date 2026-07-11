@@ -140,7 +140,7 @@ a.contact-row b{color:var(--red)}
 /* ---------- FOOTER ---------- */
 footer{background:#0a0c0f;color:rgba(255,255,255,.7);padding:48px 0;text-align:center}
 .foot-in{display:grid;gap:14px;justify-items:center}
-.foot-logo{height:30px;background:#fff;padding:10px 16px;border-radius:10px}
+.foot-logo{height:48px;background:#fff;padding:5px 8px;border-radius:8px}
 footer a{color:#fff;font-weight:700}
 .copy{font-size:13px;color:rgba(255,255,255,.4)}
 
