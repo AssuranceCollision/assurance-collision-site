@@ -84,6 +84,14 @@ img{max-width:100%}
 
 /* ---------- SECTION SHELL ---------- */
 section{padding:clamp(64px,9vw,110px) 0}
+
+/* ---------- TRACK / 维修进度查询 ---------- */
+.track{background:var(--soft)}
+.track-cta{display:grid;grid-template-columns:1fr 1fr;gap:20px;max-width:640px;margin:0 auto}
+.track-btn{display:flex;align-items:center;justify-content:center;background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:28px 30px;box-shadow:0 10px 30px -22px rgba(16,20,24,.4);transition:transform .18s,box-shadow .18s,border-color .18s}
+.track-btn:hover{transform:translateY(-4px);box-shadow:var(--shadow);border-color:#d6dbe2}
+.track-btn b{font-size:20px;color:var(--ink)}
+@media(max-width:780px){.track-cta{grid-template-columns:1fr}}
 .sec-head{max-width:640px;margin:0 auto clamp(40px,6vw,64px);text-align:center}
 .tag{display:inline-block;font-size:13px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--red);margin-bottom:14px}
 .tag.light{color:#ff8a91}
