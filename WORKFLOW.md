@@ -103,6 +103,17 @@ git push        # Netlify 自动重新部署
 
 ---
 
+## 6.5 更新记录(上线后)
+
+- **2026-08-08** — 维修进度 tracker 入口 & 恢复客户入口
+  - 加了通往 tracker 的入口:导航栏 `Track` 链接、hero 里 "Track repair 进度查询" 按钮、`#track` 板块(位于 "Why Assurance" 下方)。
+  - `#track` 板块内两个按钮并排:**Customer Login** → `status.assuranceautocollision.com`(车主查询);**Staff Login** → `.../staff/login`(员工登录)。
+  - 期间曾临时隐藏 Customer Login(客户页调整),已恢复为两个按钮并排。（commit `8bc4388`）
+
+> **提醒**:Netlify 额度有限。未经用户明确要求**不要 `git push`**(push=自动部署)。本地 commit 可以照常。
+
+---
+
 ## 7. 待确认 / TODO
 
 - [ ] **营业时间**确认(现占位 周一–周六 9:00–18:00)
