@@ -268,18 +268,33 @@
   track.addEventListener('click', function(e){ if (Math.abs(dx) > 6) e.preventDefault(); }, true);
 })();
 
-// 客户评价：连续匀速向左滚动（marquee）。克隆一份卡片接在后面实现无缝循环；
-// 速度在 CSS 的 .rev-grid animation 时长里调（越大越慢），鼠标悬停暂停。
+// 客户评价：连续匀速向左滚动（marquee）。克隆一组卡片凑成两组，按"一整组的像素宽度"
+// 精确位移 → 无缝循环；动画时长随内容宽度计算 → 各屏（手机/电脑）滚动速度一致。
+// 速度改下面的 SPEED（每秒像素，越大越快）；鼠标悬停暂停。
 (function(){
   var track = document.querySelector('#reviews .rev-grid');
   if (!track) return;
   var originals = Array.prototype.slice.call(track.children);
-  if (originals.length < 1) return;
+  if (!originals.length) return;
   originals.forEach(function(node){
     var clone = node.cloneNode(true);
     clone.setAttribute('aria-hidden', 'true');
     track.appendChild(clone);
   });
+  var SPEED = 36; // px/秒
+  function apply(){
+    var w = 0;
+    originals.forEach(function(c){
+      var s = getComputedStyle(c);
+      w += c.getBoundingClientRect().width + parseFloat(s.marginRight || 0) + parseFloat(s.marginLeft || 0);
+    });
+    if (w <= 0) return;
+    track.style.setProperty('--rev-shift', w + 'px'); // 精确位移一整组，接缝对齐
+    track.style.animationDuration = (w / SPEED) + 's'; // 速度恒定，不随屏宽变化
+  }
+  apply();
+  var t;
+  window.addEventListener('resize', function(){ clearTimeout(t); t = setTimeout(apply, 200); });
 })();
 
 // 滚动渐入：各板块滚到视口时淡入上滑，同组元素错落出现
