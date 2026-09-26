@@ -108,12 +108,47 @@
         <li>中文服务 — 中文 / English</li>
         <li>Honest estimates, clear timelines, no surprises</li>
       </ul>
-      <a class="btn primary" href="tel:+14083685196">📞 Call for a free estimate</a>
+      <a class="btn outline" href="certifications.html">See more of our credentials →</a>
     </div>
-    <div class="why-card">
-      <div class="qmark">&ldquo;</div>
-      <p>They fixed my EQS after a bad front-end hit and it looked better than new. Handled the whole insurance claim for me.</p>
-      <div class="who"><b>— Bay Area customer</b><span>Mercedes-Benz EQS450</span></div>
+    <div class="why-right">
+      <div class="why-rotator" id="whyRotator">
+        <div class="why-track">
+          <a class="why-slide cert-slide" href="certifications.html"><img src="images/certs/steel-gma-welding.jpg" alt="I-CAR certification: Steel GMA Welding" loading="lazy" /></a>
+          <a class="why-slide cert-slide" href="certifications.html"><img src="images/certs/adas-calibration.jpg" alt="I-CAR certificate: ADAS Calibration Procedures" loading="lazy" /></a>
+          <a class="why-slide cert-slide" href="certifications.html"><img src="images/certs/aluminum-gma-welding.jpg" alt="I-CAR certificate: Aluminum GMA Welding Theory" loading="lazy" /></a>
+          <a class="why-slide cert-slide" href="certifications.html"><img src="images/certs/restraint-systems.jpg" alt="I-CAR certificate: Damage Analysis of Restraint Systems" loading="lazy" /></a>
+          <a class="why-slide cert-slide" href="certifications.html"><img src="images/certs/hybrid-vehicle.jpg" alt="I-CAR certificate: Hybrid Vehicle Identification and Damage Analysis" loading="lazy" /></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="reviews" class="reviews">
+  <div class="wrap">
+    <div class="rev-viewport">
+      <div class="rev-grid">
+        <figure class="rev-slide">
+          <div class="rev-stars" aria-label="Rated 5 out of 5"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+          <blockquote>在湾区十几年唯一一家值得信赖的修车厂，价格公道合理甚至比外面报价都实惠，检查也仔细，老板非常负责，即便现在搬去东湾 我每次也会开一小时车过来做保养，只信赖他们家。</blockquote>
+          <figcaption><b>yaoyao wang</b><span>Google 评价 · 湾区车主</span></figcaption>
+        </figure>
+        <figure class="rev-slide">
+          <div class="rev-stars" aria-label="Rated 5 out of 5"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+          <blockquote>This car repair shop is great! My car went from the right front bar of the car to the two doors on the right to the rear bar, and there are two scratches and two dents. They repaired it at the same time in 4 or 5 days. However, they also shined the light of my four tires! Thank you very much for their service quality and work attitude. It is worth recommending!</blockquote>
+          <figcaption><b>Nina Y.</b><span>Yelp review</span></figcaption>
+        </figure>
+        <figure class="rev-slide">
+          <div class="rev-stars" aria-label="Rated 5 out of 5"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+          <blockquote>I had a great experience here. My driver&rsquo;s side mirror base came loose after a minor collision, and the team fixed it in less than 20 minutes—completely free of charge…</blockquote>
+          <figcaption><b>Amy Jin</b><span>Google review · Tesla</span></figcaption>
+        </figure>
+        <figure class="rev-slide">
+          <div class="rev-stars" aria-label="Rated 5 out of 5"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+          <blockquote>The team was very careful, professional, and detail-oriented throughout the entire process. … Highly recommend for anyone looking for reliable and attentive car maintenance.</blockquote>
+          <figcaption><b>emilie wang</b><span>Google review</span></figcaption>
+        </figure>
+      </div>
     </div>
   </div>
 </section>
@@ -194,9 +229,62 @@
   }, 5000);
 })();
 
+// Why Us 右侧轮播：左右滑动，每 3 秒自动切换，支持鼠标/触摸左右拖动
+(function(){
+  var rotator = document.getElementById('whyRotator');
+  if (!rotator) return;
+  var track = rotator.querySelector('.why-track');
+  var n = track ? track.children.length : 0;
+  if (n < 2) return;
+  var i = 0, timer = null, DUR = 3000;
+  function go(idx){ i = (idx + n) % n; track.style.transform = 'translateX(' + (-i * 100) + '%)'; }
+  function start(){ stop(); timer = setInterval(function(){ go(i + 1); }, DUR); }
+  function stop(){ if (timer){ clearInterval(timer); timer = null; } }
+  go(0); start();
+
+  var dragging = false, startX = 0, dx = 0, w = 1;
+  track.addEventListener('pointerdown', function(e){
+    dragging = true; startX = e.clientX; dx = 0; w = rotator.clientWidth || 1;
+    track.classList.add('dragging'); stop();
+    if (track.setPointerCapture) track.setPointerCapture(e.pointerId);
+  });
+  track.addEventListener('pointermove', function(e){
+    if (!dragging) return;
+    dx = e.clientX - startX;
+    track.style.transform = 'translateX(' + (-i * 100 + (dx / w) * 100) + '%)';
+  });
+  function endDrag(){
+    if (!dragging) return;
+    dragging = false; track.classList.remove('dragging');
+    var threshold = w * 0.18;
+    if (dx <= -threshold) go(i + 1);
+    else if (dx >= threshold) go(i - 1);
+    else go(i);
+    start();
+  }
+  track.addEventListener('pointerup', endDrag);
+  track.addEventListener('pointercancel', endDrag);
+  // 拖动后不要误触发证书链接跳转
+  track.addEventListener('click', function(e){ if (Math.abs(dx) > 6) e.preventDefault(); }, true);
+})();
+
+// 客户评价：连续匀速向左滚动（marquee）。克隆一份卡片接在后面实现无缝循环；
+// 速度在 CSS 的 .rev-grid animation 时长里调（越大越慢），鼠标悬停暂停。
+(function(){
+  var track = document.querySelector('#reviews .rev-grid');
+  if (!track) return;
+  var originals = Array.prototype.slice.call(track.children);
+  if (originals.length < 1) return;
+  originals.forEach(function(node){
+    var clone = node.cloneNode(true);
+    clone.setAttribute('aria-hidden', 'true');
+    track.appendChild(clone);
+  });
+})();
+
 // 滚动渐入：各板块滚到视口时淡入上滑，同组元素错落出现
 (function(){
-  var els = document.querySelectorAll('.sec-head, .card, .ba-item, .why-copy, .why-card, .contact-card, .strip .stat');
+  var els = document.querySelectorAll('.sec-head, .card, .ba-item, .why-copy, .why-right, .contact-card, .strip .stat');
   if (!els.length) return;
   if (!('IntersectionObserver' in window)) { // 老浏览器兜底：直接全显示
     els.forEach(function(el){ el.classList.add('in'); });

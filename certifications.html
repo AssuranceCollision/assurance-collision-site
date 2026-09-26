@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>I-CAR Certifications · Assurance Collision 保诚汽车维修</title>
+<meta name="description" content="I-CAR training certificates held by the Assurance Collision (JKM 保诚汽车维修) team — the collision-repair industry standard for safe, complete, quality repairs in San Jose, CA." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700;800&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+<nav id="nav">
+  <div class="wrap nav-in">
+    <a href="index.html" class="brand"><img class="logo-img" src="images/logo.png" alt="Assurance Collision" /></a>
+    <div class="nav-links">
+      <a href="index.html#services">Services</a>
+      <a href="index.html#work">Before &amp; After</a>
+      <a href="index.html#why">Why Us</a>
+      <a href="team.html">Team</a>
+      <a href="index.html#contact">Contact</a>
+    </div>
+    <a class="nav-cta" href="tel:+14083685196">📞 (408) 368-5196</a>
+    <button class="nav-toggle" aria-label="Menu" aria-expanded="false">☰</button>
+  </div>
+</nav>
+
+<section class="certs-page">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="tag">Certifications</div>
+      <h1 class="sec-title">I-CAR certified training<span class="zh-only"> · 行业认证</span></h1>
+      <p class="sec-note">Our technicians complete ongoing I-CAR training — the collision-repair industry's recognized standard for safe, complete and quality repairs. Tap any certificate to enlarge.</p>
+    </div>
+
+    <div class="certs-grid">
+      <figure class="cert"><img src="images/certs/steel-gma-welding.jpg" alt="I-CAR Steel GMA Welding Training & Certification" loading="lazy" /><figcaption>Steel GMA Welding — Training &amp; Certification</figcaption></figure>
+      <figure class="cert"><img src="images/certs/adas-calibration.jpg" alt="I-CAR ADAS Calibration Procedures and How to Locate Them" loading="lazy" /><figcaption>ADAS Calibration Procedures &amp; How to Locate Them</figcaption></figure>
+      <figure class="cert"><img src="images/certs/aluminum-gma-welding.jpg" alt="I-CAR Aluminum GMA Welding Theory" loading="lazy" /><figcaption>Aluminum GMA Welding Theory</figcaption></figure>
+      <figure class="cert"><img src="images/certs/restraint-systems.jpg" alt="I-CAR Damage Analysis of Restraint Systems" loading="lazy" /><figcaption>Damage Analysis of Restraint Systems</figcaption></figure>
+      <figure class="cert"><img src="images/certs/hybrid-vehicle.jpg" alt="I-CAR Hybrid Vehicle Identification and Damage Analysis" loading="lazy" /><figcaption>Hybrid Vehicle Identification &amp; Damage Analysis</figcaption></figure>
+      <figure class="cert"><img src="images/certs/ac-systems.jpg" alt="I-CAR Air Conditioning Systems Operation and Damage Analysis" loading="lazy" /><figcaption>Air Conditioning Systems Operation &amp; Damage Analysis</figcaption></figure>
+      <figure class="cert"><img src="images/certs/vehicle-protection.jpg" alt="I-CAR Vehicle Protection During the Repair Process" loading="lazy" /><figcaption>Vehicle Protection During the Repair Process</figcaption></figure>
+      <figure class="cert"><img src="images/certs/writing-the-estimate.jpg" alt="I-CAR Writing the Estimate" loading="lazy" /><figcaption>Writing the Estimate</figcaption></figure>
+    </div>
+
+    <div class="certs-cta">
+      <a class="btn primary" href="tel:+14083685196">📞 Call for a free estimate</a>
+      <a class="btn ghost dark" href="index.html">← Back to home</a>
+    </div>
+  </div>
+</section>
+
+<div class="lightbox" id="lightbox" aria-hidden="true">
+  <span class="lb-close" aria-label="Close">&times;</span>
+  <img src="" alt="" />
+</div>
+
+<footer>
+  <div class="wrap foot-in">
+    <img class="logo-img foot-logo" src="images/logo.png" alt="Assurance Collision" />
+    <p>Assurance Collision · JKM 保诚汽车维修 · 96 San Jose Ave, San Jose, CA<br /><a href="tel:+14083685196">(408) 368-5196</a> · WeChat 微信 jkmcars · <a href="mailto:Assurancesf@gmail.com">Assurancesf@gmail.com</a></p>
+    <p class="copy">© 2026 Assurance Collision. All rights reserved.</p>
+  </div>
+</footer>
+
+<script>
+// 手机端汉堡菜单
+(function(){
+  var nav = document.getElementById('nav');
+  var tog = nav && nav.querySelector('.nav-toggle');
+  if (!tog) return;
+  tog.addEventListener('click', function(){
+    var open = nav.classList.toggle('open');
+    tog.setAttribute('aria-expanded', open ? 'true' : 'false');
+    tog.textContent = open ? '✕' : '☰';
+  });
+  nav.querySelectorAll('.nav-links a').forEach(function(a){
+    a.addEventListener('click', function(){
+      nav.classList.remove('open');
+      tog.setAttribute('aria-expanded', 'false');
+      tog.textContent = '☰';
+    });
+  });
+})();
+
+// 点击证书放大（lightbox）
+(function(){
+  var lb = document.getElementById('lightbox');
+  if (!lb) return;
+  var lbImg = lb.querySelector('img');
+  function open(src, alt){ lbImg.src = src; lbImg.alt = alt || ''; lb.classList.add('open'); lb.setAttribute('aria-hidden','false'); }
+  function close(){ lb.classList.remove('open'); lb.setAttribute('aria-hidden','true'); lbImg.src = ''; }
+  document.querySelectorAll('.cert img').forEach(function(img){
+    img.addEventListener('click', function(){ open(img.src, img.alt); });
+  });
+  lb.addEventListener('click', close);
+  document.addEventListener('keydown', function(e){ if (e.key === 'Escape') close(); });
+})();
+</script>
+
+</body>
+</html>
